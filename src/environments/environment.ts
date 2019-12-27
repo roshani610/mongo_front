@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  url:"https://172.16.0.174:3000/user",
-  prodUrl:"https://172.16.0.174:3000/product"
+  url:"http://172.16.0.174:3000/user",
+  prodUrl:"http://172.16.0.174:3000/product"
 };
 
 
