@@ -1,0 +1,25 @@
+<button routerLink="/addProduct" routerLinkActive="router-link-active" >Add Product</button>
+<!-- <form [formGroup]="searchDataForm" (ngSubmit)="handleSubmit(searchDataForm.value)">
+  <input type="text" placeholder="search" formControlName="searchValue"/>
+  <button type="submit">Search</button>
+</form> -->
+<table datatable [dtOptions]="dtOptions"  class="table table-striped table-bordered dt-responsive nowrap" id="productListing">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Product name</th>
+        <th>Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="products?.length != 0">
+      <tr *ngFor="let product of products">
+        <td>{{ product._id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price }}</td>
+        <td><button type="button" [routerLink]="['/editProduct',product._id]" routerLinkActive="router-link-active" >Edit</button>
+          <button type="button" (click)="deleteProduct(product._id)" >Delete</button>
+        </td>
+      </tr>
+    </tbody>
+</table>

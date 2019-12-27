@@ -1,0 +1,9 @@
+<div style="text-align:center">
+    <form [formGroup]="sigUpForm" (ngSubmit)="handleSubmit(sigUpForm.value)">
+        <label>Username:</label>
+        <input type="text" formControlName="uName"><br><br>
+        <label>Password:</label>
+        <input type="password" formControlName="pwd"><br><br>
+        <button type="submit" [disabled]="!sigUpForm.valid">Register</button>
+    </form>
+</div>
