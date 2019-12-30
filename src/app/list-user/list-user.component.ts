@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../service/product.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserService } from '../service/user.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-list-user',
+  templateUrl: './list-user.component.html',
+  styleUrls: ['./list-user.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class ListUserComponent implements OnInit {
 
- // searchDataForm:FormGroup;
+  // searchDataForm:FormGroup;
   dtOptions: DataTables.Settings = {};
-  products:[];
-  constructor(private pService:ProductService) { 
+  users:[];
+  constructor(private uService:UserService) { 
    /*  this.searchDataForm=new FormGroup({
       searchValue:new FormControl([],[Validators.required])
     }); */
@@ -22,22 +21,22 @@ export class HomeComponent implements OnInit {
       serverSide: true,
       columns: [
       {data: '_id'},
-      {data: 'name'},
-      {data: 'price'},
+      {data: 'uName'},
+      {data: 'pwd'},
       {title: 'Action',searchable:false,orderable:false}]
     };
     this.dtOptions.ajax = (dataTablesParameters: any, callback) => {
       console.log(dataTablesParameters);
-      this.pService
-        .listProduct(dataTablesParameters)
+      this.uService
+        .listUser(dataTablesParameters)
         .subscribe(resp => {
          // console.log(resp);
          console.log(resp);
          if(resp['status'] === 200){
-           this.products=resp['data'];
+           this.users=resp['data'];
          }
           if(resp['status'] === 200){
-            this.products = resp['data'];
+            this.users = resp['data'];
           //  console.log(this.banners);
             callback({
               recordsTotal: resp['length'],
@@ -54,21 +53,20 @@ export class HomeComponent implements OnInit {
  
  /*  handleSubmit(formData){
     console.log(formData);
-    this.pService.searchProduct(formData.searchValue).subscribe(resp=>{
+    this.uService.searchuser(formData.searchValue).subscribe(resp=>{
       console.log("resp",resp);
-      this.products=resp['data'];
+      this.users=resp['data'];
     })
   } */
-  deleteProduct(id){
-    this.pService.deleteProduct(id).subscribe(resp=>{
+  deleteuser(id){
+    this.uService.deleteUser(id).subscribe(resp=>{
       console.log('resp:',resp);
       if(resp['status'] === 200 && resp['data'].deletedCount >0){
-        $("#productListing").DataTable().ajax.reload();
+        $("#userListing").DataTable().ajax.reload();
       }
     })
   }
   ngOnInit(): void { }
   
  
-
 }

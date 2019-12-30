@@ -32,4 +32,5 @@ export class ProductService {
     const params= new HttpParams().set('params',productId);
     return this.http.delete(this.url+"/deleteProduct",{params});
   }
+  
 }

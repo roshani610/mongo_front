@@ -22,9 +22,7 @@ export class EditProductComponent implements OnInit {
     
 
   }
-  getProductData(){
-   
-  }
+  
   createForm(){
     this.editProductForm=new FormGroup({
       name:new FormControl([],[]),

@@ -1,0 +1,24 @@
+<!-- <form [formGroup]="searchDataForm" (ngSubmit)="handleSubmit(searchDataForm.value)">
+  <input type="text" placeholder="search" formControlName="searchValue"/>
+  <button type="submit">Search</button>
+</form> -->
+<table datatable [dtOptions]="dtOptions"  class="table table-striped table-bordered dt-responsive nowrap" id="userListing">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="users?.length != 0">
+      <tr *ngFor="let user of users">
+        <td>{{ user._id }}</td>
+        <td>{{ user.uName }}</td>
+        <td>{{ user.pwd }}</td>
+        <td><button type="button" [routerLink]="['/editUser',user._id]" routerLinkActive="router-link-active" >Edit</button>
+          <button type="button" (click)="deleteuser(user._id)" >Delete</button>
+        </td>
+      </tr>
+    </tbody>
+</table>

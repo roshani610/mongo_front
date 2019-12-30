@@ -11,6 +11,8 @@ import { LoginComponent } from './login/login.component';
 import { DataTablesModule } from 'angular-datatables';
 import { AddProductComponent } from './add-product/add-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { ListUserComponent } from './list-user/list-user.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { EditProductComponent } from './edit-product/edit-product.component';
     LoginComponent,
     AddProductComponent,
     EditProductComponent,
+    EditUserComponent,
+    ListUserComponent,
     
   ],
   imports: [
